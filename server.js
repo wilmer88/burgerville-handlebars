@@ -1,19 +1,28 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const mysql = require("mysql");
+const connection = require("./config/connection");
+//catching exported data connection from connection.js file the has jawdb from heroku
+//const connection = require("./config/connection");
 const app = express();
 const PORT = process.env.PORT || 8080;
-//app middleware
+//app middleware sets up the express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//midleware for handelbars
+//handlbars middleware sets up the express app to handle data parsing
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+
+  
+
 
 //get rout to render the whats in the index file in main.handlbars file also able to inject values when you res.render
 //rendering into index to show on main handlebars file
 app.get("/",(req, res) =>{
+    connection.query("select * from gesas",(err, data) =>{
+        console.table(data);
+    })
     res.render("index", {name: "Wilmer Rivera Morter"});
 });
 // test rout/get rout to a web browser api page 
@@ -27,10 +36,3 @@ app.listen(PORT,() =>{
     console.log(`server is runinin on http://localhost:${PORT}`)
 }
 )
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   port: 3306,
-//   user: "root",
-//   password: "morter706",
-//   database: "",
-// });
