@@ -2,7 +2,6 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const connection = require("./config/connection");
 //catching exported data connection from connection.js file the has jawdb from heroku
-//const connection = require("./config/connection");
 const app = express();
 const PORT = process.env.PORT || 8080;
 //app middleware sets up the express app to handle data parsing
