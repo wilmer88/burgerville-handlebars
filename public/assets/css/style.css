@@ -18,3 +18,13 @@ li {
   margin-bottom: 5px;
 }
 
+.body{
+  background-color: pink;
+}
+.h1{
+  color: red;
+}
+
+#mainSection{
+  background-color: green;
+}
