@@ -23,7 +23,7 @@
       };
   
       // Send the POST request.
-      $.ajax("/api/cats", {
+      $.ajax("/api/config", {
         type: "POST",
         data: neworder
       }).then(
@@ -35,11 +35,11 @@
       );
     });
   
-    $(".delete-cat").on("click", function(event) {
+    $(".add").on("click", function(event) {
       var id = $(this).data("id");
   
       // Send the DELETE request.
-      $.ajax("/api/cats/" + id, {
+      $.ajax("/api/config/" + id, {
         type: "DELETE"
       }).then(
         function() {
@@ -49,5 +49,16 @@
         }
       );
     });
-  });
   
+    app.delete("/api/config", (req, res) =>{
+        connection.query("DELETE FROM guesas  WHERE id = ?", [req.params.id], (err, dat)=>{
+           if (err){
+               return res.status(500).end();
+           }
+           res.joson({
+               error:false,
+               data:null,
+               message: "succes eating burger"
+           })
+        })
+       })

@@ -33,6 +33,7 @@ app.get("/api/config",(req, res) => {
     });
 });
 
+
 app.use(express.static("public"));
 
 app.listen(PORT,() =>{

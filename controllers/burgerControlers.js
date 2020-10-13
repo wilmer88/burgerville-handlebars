@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/api/cats", function(req, res) {
+router.post("/api/config", function(req, res) {
   cat.create([
     "name", "sleepy"
   ], [
@@ -27,7 +27,7 @@ router.post("/api/cats", function(req, res) {
   });
 });
 
-router.put("/api/cats/:id", function(req, res) {
+router.put("/api/gesas/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
@@ -44,7 +44,7 @@ router.put("/api/cats/:id", function(req, res) {
   });
 });
 
-router.delete("/api/cats/:id", function(req, res) {
+router.delete("/api//:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   cat.delete(condition, function(result) {
